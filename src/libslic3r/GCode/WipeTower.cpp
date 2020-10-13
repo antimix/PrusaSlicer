@@ -766,6 +766,9 @@ WipeTower::ToolChangeResult WipeTower::tool_change(size_t tool, bool last_in_lay
                         common_temp_H = m_filpar[tool].filament_mintemp;
                      }					
                 }
+                                if ((m_semm == true) && (m_dribbling_enabled == true)) {
+                                        writer.set_extruder_temp(common_temp_H, false);
+                                }
 				
 				toolchange_Change(writer, tool, m_filpar[tool].material); // Change the tool, set a speed override for soluble and flex materials.
 				
